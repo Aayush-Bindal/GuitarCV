@@ -6,7 +6,7 @@ MIN_HAND_DETECTION_CONFIDENCE = 0.7
 MIN_HAND_PRESENCE_CONFIDENCE = 0.7
 MIN_TRACKING_CONFIDENCE = 0.7
 
-CHORDS = ["C", "G", "Am", "Em", "F", "D"]
+CHORDS = ["C", "G", "Am", "Bm", "F", "D"]
 WHEEL_DISPLAY_SIZE = 350
 WHEEL_CENTER = (230, 519)  # lower-left area of 1280x720
 LABEL_RADIUS = 115  # px from wheel center to chord text
@@ -37,6 +37,6 @@ SOUND_OFFSET_S = 1.3      # seconds to skip at start of every chord file
 SOUND_VOLUME = 0.85        # 0.0 to 1.0
 
 OPEN_SOUND_NAME = "Open"
-OPEN_SOUND_OFFSET_S = 0.0
+OPEN_SOUND_OFFSET_S = SOUND_OFFSET_S
 
 WINDOW_NAME = "GuitarCV"
