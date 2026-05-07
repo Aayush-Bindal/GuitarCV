@@ -32,4 +32,11 @@ STRUM_THRESHOLD = 18       # px delta Y to trigger strum
 STRUM_COOLDOWN_MS = 400
 VIBRATION_DURATION_MS = 600
 
-WINDOW_NAME = "GuitarCV - Phase 2"
+SOUND_FOLDER = "assets/sounds"
+SOUND_OFFSET_S = 1.3      # seconds to skip at start of every chord file
+SOUND_VOLUME = 0.85        # 0.0 to 1.0
+
+OPEN_SOUND_NAME = "Open"
+OPEN_SOUND_OFFSET_S = 0.0
+
+WINDOW_NAME = "GuitarCV"
