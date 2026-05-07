@@ -2,6 +2,7 @@ import cv2
 import config
 import wheel
 import strings
+import sound
 from hands import HandTracker
 
 def main():
@@ -10,6 +11,7 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     base_img, glow_img = wheel.load_wheel_images()
+    sounds = sound.load_sounds()
     timestamp = 0
     prev_right_y = None
     last_strum_time = 0
@@ -46,6 +48,10 @@ def main():
         )
         if strummed:
             print(f"Strummed: {direction}")
+            if active_index != -1:
+                sound.play_chord(sounds, config.CHORDS[active_index])
+            else:
+                sound.play_chord(sounds, config.OPEN_SOUND_NAME)
 
         vib_prog = strings.get_vibration_progress(last_strum_time)
         strings.draw_strings(frame, vib_prog)
