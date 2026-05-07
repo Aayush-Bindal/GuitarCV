@@ -9,8 +9,10 @@ def load_wheel_images():
     sz = (config.WHEEL_DISPLAY_SIZE, config.WHEEL_DISPLAY_SIZE)
     return cv2.resize(base_img, sz), cv2.resize(glow_img, sz)
 
-def get_active_segment(knuckle, fingertip):
-    dx, dy = fingertip[0] - knuckle[0], fingertip[1] - knuckle[1]
+def get_active_segment(wrist, knuckle, fingertip):
+    base_x = (wrist[0] + knuckle[0]) // 2
+    base_y = (wrist[1] + knuckle[1]) // 2
+    dx, dy = fingertip[0] - base_x, fingertip[1] - base_y
     if math.hypot(dx, dy) < 25:
         return -1
     angle = math.degrees(math.atan2(dy, dx)) % 360
