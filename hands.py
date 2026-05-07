@@ -51,7 +51,11 @@ class HandTracker:
                 self._draw_hand(frame, hand_landmarks)
 
                 # Label near wrist
-                label = "Left" if self.latest_result.handedness[i][0].display_name == "Right" else "Right"
+                if i < len(self.latest_result.handedness) and self.latest_result.handedness[i]:
+                    label = "Left" if self.latest_result.handedness[i][0].display_name == "Right" else "Right"
+                else:
+                    label = "Unknown"
+                
                 h, w = frame.shape[:2]
                 wrist = hand_landmarks[0]
                 cx, cy = int(wrist.x * w), int(wrist.y * h)
