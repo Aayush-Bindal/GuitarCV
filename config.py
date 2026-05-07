@@ -3,7 +3,7 @@ MODEL_URL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/han
 
 NUM_HANDS = 2
 MIN_HAND_DETECTION_CONFIDENCE = 0.7
-MIN_HAND_PRESENCE_CONFIDENCE = 0.7
+MIN_HAND_PRESENCE_CONFIDENCE = 0.4
 MIN_TRACKING_CONFIDENCE = 0.7
 
 CHORDS = ["C", "G", "Am", "Bm", "F", "D"]
