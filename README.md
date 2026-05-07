@@ -72,7 +72,7 @@ GuitarCV/
 Requires Python 3.10 or higher and uv for package management.
 
 ```bash
-git clone https://github.com/yourusername/GuitarCV
+git clone https://github.com/Aayush-Bindal/GuitarCV
 cd GuitarCV
 uv sync
 uv run main.py
