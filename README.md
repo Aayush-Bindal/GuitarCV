@@ -27,11 +27,18 @@ If no chord is selected and you strum, an open guitar strum plays.
 
 ## Chord Wheel Layout
 
-Six chords arranged clockwise starting from the 9-11 o'clock position:
+By default, six chords are arranged clockwise starting from the 9-11 o'clock position:
 
 C, G, Am, Em, F, D
 
-These chords are all in the key of C major and are guaranteed to sound musical together regardless of the order you play them.
+These default chords are all in the key of C major.
+
+**Custom Chords:**
+When you run the app, it will prompt you in the terminal to optionally specify custom chords. 
+You can choose up to 6 chords from the 14 available pre-loaded sounds:
+`A, Am, B, Bm, C, Cm, D, Dm, E, Em, F, Fm, G, Gm`
+
+If you specify fewer than 6 chords (e.g., just 4), the remaining slots on the wheel will be empty. Pointing to an empty slot and strumming will play the "Open" strings sound.
 
 ---
 
@@ -112,7 +119,6 @@ All tunable values live in `config.py`:
 
 ## Future Features
 
-- Chord wheel customization — choose which chords appear on the wheel before playing
 - Multiple wheel presets — switch between different chord sets mid-play
 - Partial string strumming — detect which strings the right hand crosses for individual note plucking
 
