@@ -35,7 +35,7 @@ def composite_wheel(frame, base_img, glow_img, center, active_index):
         fx1, fy1, fx2, fy2 = max(0, x1), max(0, y1), min(fw, x2), min(fh, y2)
         wx1, wy1, wx2, wy2 = fx1 - x1, fy1 - y1, fx2 - x1, fy2 - y1
         if fx1 < fx2 and fy1 < fy2:
-            alpha = np.expand_dims(img[wy1:wy2, wx1:wx2, 3] / 255.0, axis=-1)
+            alpha = np.expand_dims(img[wy1:wy2, wx1:wx2, 3] / 255.0, axis=-1) * 0.6
             rgb = img[wy1:wy2, wx1:wx2, :3]
             f[fy1:fy2, fx1:fx2] = f[fy1:fy2, fx1:fx2] * (1 - alpha) + rgb * alpha
             
