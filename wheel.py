@@ -47,6 +47,8 @@ def composite_wheel(frame, base_img, glow_img, center, active_index):
 
 def draw_chord_labels(frame, active_index):
     for i, chord in enumerate(config.CHORDS):
+        if not chord:
+            continue
         angle = math.radians(config.SEGMENT_0_CENTER_ANGLE + i * 60)
         x = int(config.WHEEL_CENTER[0] + config.LABEL_RADIUS * math.cos(angle))
         y = int(config.WHEEL_CENTER[1] + config.LABEL_RADIUS * math.sin(angle))

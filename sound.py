@@ -9,7 +9,8 @@ def load_sounds():
     
     # Load regular chords
     for chord in config.CHORDS:
-        _load_single_sound(sounds, chord, config.SOUND_OFFSET_S)
+        if chord:  # Skip empty chords
+            _load_single_sound(sounds, chord, config.SOUND_OFFSET_S)
         
     # Load open strings sound
     _load_single_sound(sounds, config.OPEN_SOUND_NAME, config.OPEN_SOUND_OFFSET_S)

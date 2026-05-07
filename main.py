@@ -5,7 +5,31 @@ import strings
 import sound
 from hands import HandTracker
 
+def prompt_custom_chords():
+    avail = ["A", "Am", "B", "Bm", "C", "Cm", "D", "Dm", "E", "Em", "F", "Fm", "G", "Gm"]
+    print(f"\nAvailable chords (14): {', '.join(avail)}")
+    if input("Specify custom chords? (y/N): ").strip().lower() != 'y':
+        return
+    while True:
+        print("Enter up to 6 chords separated by spaces (e.g., 'E', 'Em').")
+        inp = input("Chords: ").strip()
+        if not inp: return
+        user_chords = inp.split()
+        if len(user_chords) > 6:
+            print("Error: Maximum 6 chords allowed.")
+            continue
+        invalid = [c for c in user_chords if c not in avail]
+        if invalid:
+            print(f"Error: we dont have matching chord error for: {', '.join(invalid)}")
+            continue
+        while len(user_chords) < 6:
+            user_chords.append("")
+        config.CHORDS = user_chords
+        print(f"Custom chords loaded: {[c for c in config.CHORDS if c]}\n")
+        break
+
 def main():
+    prompt_custom_chords()
     tracker = HandTracker()
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -39,10 +63,12 @@ def main():
                     knuckle = (int(hand_landmarks[5].x * w), int(hand_landmarks[5].y * h))
                     fingertip = (int(hand_landmarks[8].x * w), int(hand_landmarks[8].y * h))
                     active_index = wheel.get_active_segment(wrist, knuckle, fingertip)
+                    if active_index != -1 and config.CHORDS[active_index] == "":
+                        active_index = -1
                 elif tracker.latest_result.handedness[i][0].display_name == "Left":
                     h, w = frame.shape[:2]
                     right_landmarks = (int(hand_landmarks[9].x * w), int(hand_landmarks[9].y * h))
-
+        
         strummed, direction, prev_right_y, last_strum_time = strings.detect_strum(
             right_landmarks, prev_right_y, last_strum_time
         )
